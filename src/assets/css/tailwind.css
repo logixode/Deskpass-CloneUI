@@ -1,0 +1,45 @@
+html {
+  scroll-behavior: smooth;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.scrollable {
+  /* background-color: #e0e0e0; */
+  height: 100vh;
+  padding: 10px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.scrollable::-webkit-scrollbar {
+  display: none;
+}
+
+.box {
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+  height: 400px;
+    transform: scale(1);
+  background-color: lightseagreen;
+}
+
+.box:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+  animation: scaling 0.35s ease-out;
+}
+
+@keyframes scaling {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.03);
+  }
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
