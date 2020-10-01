@@ -23,6 +23,7 @@ html {
 .box {
   margin: 10px;
   width: 300px;
+  height: 401px;
   overflow: hidden;
   transform: scale(1);
   /* background-color: lightseagreen; */
@@ -45,6 +46,20 @@ img:hover {
   cursor: pointer;
   transform: scale(1.03);
   transition: 2s cubic-bezier(.19,1,.22,1);
+}
+
+.fading {
+  animation: fading 6.5s linear;
+  margin: 0 10px !important;
+    height: 0px;
+}
+
+@keyframes fading {
+  from {
+    height: 401px;
+  } to {
+    height: 0px;
+  }
 }
 
 @tailwind base;

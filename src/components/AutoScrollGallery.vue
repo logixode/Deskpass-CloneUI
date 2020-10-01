@@ -1,8 +1,8 @@
 <template>
   <div class="hello">
     <div class="scrollable flex flex-wrap">
-      <div class="box" v-for="(i, index) in boxItem" :key="index">
-        <img :src="image[boxItem[i]]" />
+      <div class="box" v-for="(i, index) in image" :key="index">
+        <img :src="i" />
         <!-- <img :src="image[boxItem[i]]" /> -->
       </div>
     </div>
@@ -28,31 +28,50 @@ export default {
   }),
   mounted() {
     let scrollable = document.querySelector(".scrollable");
-    let scrollInterval;
-
+    let scrollInterval, rerollImg;
     let scrollItem = () => {
       scrollInterval = setInterval(() => {
         scrollable.scrollBy(0, 1);
       }, 15);
     };
     scrollItem();
-
     scrollable.onmouseover = () => {
       clearInterval(scrollInterval);
+      // clearInterval(fadingClass);
+      clearInterval(rerollImg);
     };
-
     scrollable.onmouseleave = () => {
       scrollItem();
+      reroll();
     };
+
     // console.log(this.boxItem.length);
     let reroll = () => {
-      setTimeout(() => {
+      // fadingClass = setTimeout(() => {
+      scrollable.childNodes[1].className += " fading";
+      scrollable.firstElementChild.className += " fading";
+      // }, 3000);
+      rerollImg = setTimeout(() => {
+        let lastImg1 = document.createElement("div");
+        let lastImg2 = document.createElement("div");
+        lastImg1.className = "box";
+        lastImg2.className = "box";
+        lastImg1.innerHTML = `<img src='${this.image[this.boxItem[0]]}'>`;
+        lastImg2.innerHTML = `<img src='${this.image[this.boxItem[1]]}'>`;
+        scrollable.appendChild(lastImg1);
+        scrollable.appendChild(lastImg2);
         this.boxItem.push(this.boxItem[0]);
+        this.boxItem.push(this.boxItem[1]);
         this.boxItem.shift();
+        this.boxItem.shift();
+        scrollable.removeChild(scrollable.childNodes[1]);
+        scrollable.removeChild(scrollable.firstChild);
         reroll();
-      }, 7000);
+      }, 6000);
     };
-    reroll();
+    setTimeout(() => {
+      reroll();
+    }, 6000);
   },
 };
 </script>
