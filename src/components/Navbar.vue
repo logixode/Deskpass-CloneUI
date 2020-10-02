@@ -28,30 +28,29 @@
       </button>
     </div>
     <div class="w-full block lg:flex lg:items-center lg:w-auto">
-      <div class="text-sm">
+      <div class="text-sm text-black">
         <a
           href="#responsive-header"
-          class="block mt-4 lg:inline-block lg:mt-0 hover:text-green-400 mr-4"
+          class="block mt-4 lg:inline-block lg:mt-0 mr-4"
         >
           Find a Space
         </a>
         <a
           href="#responsive-header"
-          class="block mt-4 lg:inline-block lg:mt-0 hover:text-green-400 mr-4"
+          class="block mt-4 lg:inline-block lg:mt-0 mr-4"
         >
           Pricing
         </a>
-        <a
-          href="#responsive-header"
-          class="block mt-4 lg:inline-block lg:mt-0 hover:text-green-400"
-        >
+        <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0">
           Teams
         </a>
-      </div>
-      <div>
+        <sup
+          class="bg-blue-600 badge-text font-bold rounded-md text-white transform scale-0 mr-4 ml-1"
+          >NEW</sup
+        >
         <a
-          href="#"
-          class="ml-5 inline-block text-sm px-4 py-2 leading-none border rounded border-green-400 hover:border-transparent hover:text-teal-500 hover:bg-transparent mt-4 lg:mt-0"
+          href="#responsive-header"
+          class="x-divider relative block mt-4 lg:inline-block lg:mt-0 ml-6"
           >Log In</a
         >
       </div>
