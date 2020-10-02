@@ -8,6 +8,11 @@ html {
 #app {
   width: 100%;
 }
+
+.image-right {
+  margin-top: -31%;
+}
+
 .scrollable {
   /* background-color: #e0e0e0; */
   height: 100vh;
@@ -21,43 +26,43 @@ html {
 }
 
 .box {
-  margin: 10px;
+  margin: 20px 10px;
   width: 300px;
   height: 401px;
   overflow: hidden;
   transform: scale(1);
-  /* background-color: lightseagreen; */
   border-radius: 7px;
-  transition: 1.5s cubic-bezier(.19,1,.22,1);
+  transition: 1.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .box img {
   transform: scale(1.15);
-  transition: 1.5s cubic-bezier(.19,1,.22,1);
+  transition: 1.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 img:hover {
   cursor: pointer;
   transform: scale(1);
-  transition: 2s cubic-bezier(.19,1,.22,1);
+  transition: 2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .box:hover {
   cursor: pointer;
-  transform: scale(1.03);
-  transition: 2s cubic-bezier(.19,1,.22,1);
+  transform: scale(1.05);
+  transition: 2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .fading {
   animation: fading 6.5s linear;
   margin: 0 10px !important;
-    height: 0px;
+  height: 0px;
 }
 
 @keyframes fading {
   from {
     height: 401px;
-  } to {
+  }
+  to {
     height: 0px;
   }
 }

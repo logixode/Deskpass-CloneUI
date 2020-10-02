@@ -1,9 +1,23 @@
 <template>
   <div class="hello">
-    <div class="scrollable flex flex-wrap">
-      <div class="box" v-for="(i, index) in image" :key="index">
-        <img :src="i" />
-        <!-- <img :src="image[boxItem[i]]" /> -->
+    <div class="scrollable flex flex-wrap" @scroll="scrollingComponent">
+      <div class="image-left block">
+        <div class="box" v-for="(i, index) in imgLeft" :key="index">
+          <!-- {{ index % 2 ? "s" : "b" }} -->
+          <!-- <img class="image-left" :src="i" v-if="i % 2" /> -->
+          <!-- <img class="image-right" :src="i" v-else /> -->
+          <img :src="i" />
+          <!-- <img :src="image[boxItem[i]]" /> -->
+        </div>
+      </div>
+      <div class="image-right block">
+        <div class="box" v-for="(i, index) in imgRight" :key="index">
+          <!-- {{ index % 2 ? "s" : "b" }} -->
+          <!-- <img class="image-left" :src="i" v-if="i % 2" /> -->
+          <!-- <img class="image-right" :src="i" v-else /> -->
+          <img :src="i" />
+          <!-- <img :src="image[boxItem[i]]" /> -->
+        </div>
       </div>
     </div>
   </div>
@@ -19,59 +33,84 @@ export default {
       "https://deskpass-marketing.imgix.net/tall-images/spaces-gallery-hou-ranch.jpg?crop=focalpoint&domain=deskpass-marketing.imgix.net&fit=crop&fm=pjpg&fp-x=0.5&fp-y=0.5&h=1066&ixlib=php-3.3.0&q=61&w=800 800w",
       "https://deskpass-marketing.imgix.net/tall-images/spaces-gallery-atx-impact-hub.jpg?crop=focalpoint&domain=deskpass-marketing.imgix.net&fit=crop&fm=pjpg&fp-x=0.5&fp-y=0.5&h=1066&ixlib=php-3.3.0&q=61&w=800 800w",
       "https://deskpass-marketing.imgix.net/tall-images/spaces-gallery-la-cross-campus.jpg?crop=focalpoint&domain=deskpass-marketing.imgix.net&fit=crop&fm=pjpg&fp-x=0.5&fp-y=0.5&h=1066&ixlib=php-3.3.0&q=61&w=800 800w",
-      "https://deskpass-marketing.imgix.net/tall-images/spaces-gallery-bos-workbar.jpg?crop=focalpoint&domain=deskpass-marketing.imgix.net&fit=crop&fm=pjpg&fp-x=0.5&fp-y=0.5&h=1066&ixlib=php-3.3.0&q=61&w=800 800w",
       "https://deskpass-marketing.imgix.net/tall-images/spaces-gallery-mia-building-co.jpg?crop=focalpoint&domain=deskpass-marketing.imgix.net&fit=crop&fm=pjpg&fp-x=0.5&fp-y=0.5&h=1066&ixlib=php-3.3.0&q=61&w=800 800w",
       "https://deskpass-marketing.imgix.net/tall-images/spaces-gallery-dc-metro-office.jpg?crop=focalpoint&domain=deskpass-marketing.imgix.net&fit=crop&fm=pjpg&fp-x=0.5&fp-y=0.5&h=1066&ixlib=php-3.3.0&q=61&w=800 800w",
       "https://deskpass-marketing.imgix.net/tall-images/spaces-gallery-chi-exchange-312.jpg?crop=focalpoint&domain=deskpass-marketing.imgix.net&fit=crop&fm=pjpg&fp-x=0.5&fp-y=0.5&h=1066&ixlib=php-3.3.0&q=61&w=800 800w",
+      "https://deskpass-marketing.imgix.net/tall-images/spaces-gallery-bos-workbar.jpg?crop=focalpoint&domain=deskpass-marketing.imgix.net&fit=crop&fm=pjpg&fp-x=0.5&fp-y=0.5&h=1066&ixlib=php-3.3.0&q=61&w=800 800w",
     ],
-    boxItem: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    imgLeft: [],
+    imgRight: [],
+    boxItemLeft: [0, 1, 2, 3, 4],
+    boxItemRight: [0, 1, 2, 3, 4],
+    rerolled: false,
   }),
   mounted() {
+    this.imgLeft = this.image.splice(0, this.image.length / 2);
+    this.imgRight = this.image;
+
     let scrollable = document.querySelector(".scrollable");
-    let scrollInterval, rerollImg;
+    let scrollInterval;
     let scrollItem = () => {
       scrollInterval = setInterval(() => {
-        scrollable.scrollBy(0, 1);
-      }, 15);
+        scrollable.scrollTop += 1;
+      }, 10);
     };
     scrollItem();
+
     scrollable.onmouseover = () => {
       clearInterval(scrollInterval);
-      // clearInterval(fadingClass);
-      clearInterval(rerollImg);
     };
     scrollable.onmouseleave = () => {
       scrollItem();
-      reroll();
     };
+  },
+  methods: {
+    scrollingComponent() {
+      let scroll = document.querySelector(".scrollable").scrollTop;
+      if (scroll > 600 && !this.rerolled) {
+        console.log("reroll");
+        this.rerollImg();
+        this.rerolled = true;
+      }
+      if (scroll < 600 && this.rerolled) {
+        console.log("angka turun");
+        this.rerolled = false;
+      }
+      if (scroll > 700) {
+        console.log("mepet bos");
+        this.rerolled = false;
+      }
+      // console.log(document.querySelector(".scrollable").scrollTop);
+    },
+    rerollImg() {
+      let imgLeft = document.querySelector(".image-left");
+      let imgRight = document.querySelector(".image-right");
 
-    // console.log(this.boxItem.length);
-    let reroll = () => {
-      // fadingClass = setTimeout(() => {
-      scrollable.childNodes[1].className += " fading";
-      scrollable.firstElementChild.className += " fading";
-      // }, 3000);
-      rerollImg = setTimeout(() => {
-        let lastImg1 = document.createElement("div");
-        let lastImg2 = document.createElement("div");
-        lastImg1.className = "box";
-        lastImg2.className = "box";
-        lastImg1.innerHTML = `<img src='${this.image[this.boxItem[0]]}'>`;
-        lastImg2.innerHTML = `<img src='${this.image[this.boxItem[1]]}'>`;
-        scrollable.appendChild(lastImg1);
-        scrollable.appendChild(lastImg2);
-        this.boxItem.push(this.boxItem[0]);
-        this.boxItem.push(this.boxItem[1]);
-        this.boxItem.shift();
-        this.boxItem.shift();
-        scrollable.removeChild(scrollable.childNodes[1]);
-        scrollable.removeChild(scrollable.firstChild);
-        reroll();
-      }, 6000);
-    };
-    setTimeout(() => {
-      reroll();
-    }, 6000);
+      let lastImgLeft = document.createElement("div");
+      let lastImgRight = document.createElement("div");
+
+      lastImgLeft.className = "box";
+      lastImgRight.className = "box";
+
+      lastImgLeft.innerHTML = `<img src='${
+        this.imgLeft[this.boxItemLeft[0]]
+      }'>`;
+      lastImgRight.innerHTML = `<img src='${
+        this.imgRight[this.boxItemRight[0]]
+      }'>`;
+
+      imgLeft.appendChild(lastImgLeft);
+      imgRight.appendChild(lastImgRight);
+
+      this.boxItemLeft.push(this.boxItemLeft[0]);
+      this.boxItemRight.push(this.boxItemRight[0]);
+
+      this.boxItemLeft.shift();
+      this.boxItemRight.shift();
+
+      imgLeft.removeChild(imgLeft.firstChild);
+      imgRight.removeChild(imgRight.firstChild);
+    },
   },
 };
 </script>
