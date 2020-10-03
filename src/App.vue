@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <Navbar />
-    <div class="grid grid-cols-12 lg:h-screen h-mobile">
+    <div class="grid grid-cols-12 lg:h-screen">
       <AutoScrollGallery
-        class="lg:col-span-6 col-span-12 absolute lg:relative -z-10"
+        class="lg:col-span-6 col-span-12 absolute lg:relative -z-10 lg:z-0"
       />
       <div class="lg:col-span-6 col-span-12 lg:px-6 ">
         <div

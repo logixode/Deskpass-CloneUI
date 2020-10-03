@@ -34,7 +34,7 @@ input:focus {
 .box {
   margin: 20px 10px;
   width: 300px;
-  height: 401px;
+  /* height: 401px; */
   overflow: hidden;
   transform: scale(1);
   border-radius: 7px;
@@ -58,12 +58,6 @@ img:hover {
   transition: 2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.fading {
-  animation: fading 6.5s linear;
-  margin: 0 10px !important;
-  height: 0px;
-}
-
 .x-divider:before {
   content: "";
   display: block;
@@ -72,6 +66,12 @@ img:hover {
   top: 0;
   bottom: 0;
   border-left: 1px solid rgba(20, 12, 64, 0.2);
+}
+
+.fading {
+  animation: fading 5s linear;
+  margin: 0 10px !important;
+  height: 0px;
 }
 
 @keyframes fading {
@@ -85,12 +85,6 @@ img:hover {
 
 @tailwind base;
 @tailwind components;
-@keyframes slideLine {
-  from {
-  }
-  to {
-  }
-}
 .line-b-blue {
   /* animation: 1s ease-out 0s 1 slideLine; */
   @apply border-b-8 border-blue-600;
@@ -128,6 +122,10 @@ img:hover {
   }
   .x-divider:before {
     display: none !important;
+  }
+
+  .box {
+    width: 197px;
   }
 }
 .badge-text {

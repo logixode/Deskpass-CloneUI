@@ -4,7 +4,7 @@
       class="scrollable h-screen lg:p-3 p-1 flex flex-wrap"
       @scroll="scrollingComponent"
     >
-      <div class="image-left block">
+      <div class="image-left">
         <div class="box" v-for="(i, index) in imgLeft" :key="index">
           <!-- {{ index % 2 ? "s" : "b" }} -->
           <!-- <img class="image-left" :src="i" v-if="i % 2" /> -->
@@ -13,7 +13,7 @@
           <!-- <img :src="image[boxItem[i]]" /> -->
         </div>
       </div>
-      <div class="image-right block">
+      <div class="image-right">
         <div class="box" v-for="(i, index) in imgRight" :key="index">
           <!-- {{ index % 2 ? "s" : "b" }} -->
           <!-- <img class="image-left" :src="i" v-if="i % 2" /> -->
@@ -71,18 +71,32 @@ export default {
   methods: {
     scrollingComponent() {
       let scroll = document.querySelector(".scrollable").scrollTop;
-      if (scroll > 600 && !this.rerolled) {
-        console.log("reroll");
-        this.rerollImg();
-        this.rerolled = true;
-      }
-      if (scroll < 600 && this.rerolled) {
-        console.log("angka turun");
-        this.rerolled = false;
-      }
-      if (scroll > 750) {
-        console.log("mepet bos");
-        this.rerolled = false;
+      // console.log(scroll);
+      if (window.innerWidth < 800) {
+        if (scroll > 260 && !this.rerolled) {
+          // console.log("reroll");
+          scroll = 183;
+          this.rerollImg();
+          this.rerolled = true;
+        } else if (scroll < 260 && this.rerolled) {
+          // console.log("angka turun");
+          this.rerolled = false;
+        } else if (scroll > 300) {
+          // console.log("mepet bos");
+          this.rerolled = false;
+        }
+      } else {
+        if (scroll > 600 && !this.rerolled) {
+          // console.log("reroll");
+          this.rerolled = true;
+          this.rerollImg();
+        } else if (scroll < 600 && this.rerolled) {
+          // console.log("angka turun");
+          this.rerolled = false;
+        } else if (scroll > 650 && !this.rerolled) {
+          // console.log("mepet bos");
+          this.rerolled = false;
+        }
       }
       // console.log(document.querySelector(".scrollable").scrollTop);
     },
@@ -109,11 +123,11 @@ export default {
       this.boxItemLeft.push(this.boxItemLeft[0]);
       this.boxItemRight.push(this.boxItemRight[0]);
 
-      this.boxItemLeft.shift();
-      this.boxItemRight.shift();
-
       imgLeft.removeChild(imgLeft.firstChild);
       imgRight.removeChild(imgRight.firstChild);
+
+      this.boxItemLeft.shift();
+      this.boxItemRight.shift();
     },
   },
 };
