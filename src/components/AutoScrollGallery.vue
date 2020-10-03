@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <div
-      class="scrollable h-screen lg:p-3 p-1 flex flex-wrap"
+      class="scrollable h-screen lg:p-3 p-1 flex flex-wrap justify-end"
       @scroll="scrollingComponent"
     >
       <div class="image-left">
@@ -75,7 +75,6 @@ export default {
       if (window.innerWidth < 800) {
         if (scroll > 260 && !this.rerolled) {
           // console.log("reroll");
-          scroll = 183;
           this.rerollImg();
           this.rerolled = true;
         } else if (scroll < 260 && this.rerolled) {
