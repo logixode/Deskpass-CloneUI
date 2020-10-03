@@ -1,30 +1,43 @@
 <template>
   <div id="app">
     <Navbar />
-    <div class="flex h-screen">
-      <AutoScrollGallery class="lg:w-1/2" />
-      <div class="lg:w-1/2 px-6">
-        <div class="my-24 pr-24">
-          <h1 class="text-6xl font-semibold leading-tight">
-            Workspaces<br />you'll
-            <span class="border-b-8 border-blue-600">love</span>.
+    <div class="grid grid-cols-12 lg:h-screen h-mobile">
+      <AutoScrollGallery
+        class="lg:col-span-6 col-span-12 absolute lg:relative -z-10"
+      />
+      <div class="lg:col-span-6 col-span-12 lg:px-6 ">
+        <div
+          class="lg:my-24 lg:pr-24 card-sm card-sm-full mx-auto v-center lg:text-left text-center"
+        >
+          <h1
+            class="lg:text-6xl sm:text-5xl text-4xl font-semibold leading-tight"
+          >
+            Workspaces<br />you'll <span class="line-b-blue">love</span>.
           </h1>
-          <p class="text-2xl my-10">
+          <p class="lg:text-2xl text-xl lg:my-10 my-8">
             Instant access to 500+ nationwide coworking spaces for one monthly
             price.
           </p>
 
-          <h4 class="text-lg">Sign up for your free 40-day trial!</h4>
-          <div class="flex my-4 -ml-6">
-            <div class="border-2 rounded-full border-gray-400 px-6 py-3 mr-2">
+          <h4 class="text-lg">Sign up for your free 30-day trial!</h4>
+          <div class="lg:flex lg:my-4 my-2 lg:-ml-6">
+            <div
+              class="lg:border-2 sm:block lg:rounded-full lg:border-gray-400 lg:px-6 lg:py-3 lg:mr-2"
+            >
               <input
                 type="text"
                 placeholder="Email Address"
-                class="border-r-2 border-gray-400 pr-8"
+                class="my-2 lg:my-0 lg:border-r-2 sm-full form-sm lg:px-0 lg:py-0 border-gray-400 lg:pr-8"
               />
-              <input type="number" placeholder="Zip" class="w-20 ml-4" />
+              <input
+                type="number"
+                placeholder="Zip"
+                class="my-2 lg:my-0 lg:w-20 lg:ml-4 sm-full form-sm border-gray-400"
+              />
             </div>
-            <button>Find Spaces Near Me</button>
+            <button class="my-2 lg:my-0 sm-full">
+              Find Spaces Near Me
+            </button>
           </div>
           <p>
             Need space for your team?

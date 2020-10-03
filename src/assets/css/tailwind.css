@@ -23,8 +23,6 @@ input:focus {
 
 .scrollable {
   /* background-color: #e0e0e0; */
-  height: 100vh;
-  padding: 10px;
   overflow-y: hidden;
   scrollbar-width: none;
 }
@@ -87,6 +85,51 @@ img:hover {
 
 @tailwind base;
 @tailwind components;
+@keyframes slideLine {
+  from {
+  }
+  to {
+  }
+}
+.line-b-blue {
+  /* animation: 1s ease-out 0s 1 slideLine; */
+  @apply border-b-8 border-blue-600;
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    @apply fixed bg-white w-full h-screen px-10 pt-20 -z-10;
+    top: 0%;
+    left: 0%;
+  }
+  .card-sm {
+    @apply rounded overflow-hidden shadow-lg bg-white px-8 py-10;
+    overflow-wrap: break-word;
+  }
+  .card-sm-full {
+    @apply w-full;
+  }
+  .v-center {
+    @apply absolute;
+    width: 85%;
+    /* height: 75%; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .form-sm {
+    @apply border-2 px-5 py-2 rounded-full;
+  }
+  .sm-full {
+    @apply w-full;
+  }
+  .box {
+    margin: 10px 5px;
+  }
+  .x-divider:before {
+    display: none !important;
+  }
+}
 .badge-text {
   font-size: 0.7rem;
   padding: 2px 4px;
@@ -100,7 +143,15 @@ nav .block a {
 button {
   @apply bg-blue-600 text-white px-6 py-2 rounded-full;
 }
+button:hover {
+  @apply bg-blue-800;
+  transform: translateY(-3px);
+  transition: 0.15s ease;
+}
 .blue {
   @apply text-blue-700;
+}
+.blue:hover {
+  @apply text-blue-800 border-b-2 border-blue-700;
 }
 @tailwind utilities;

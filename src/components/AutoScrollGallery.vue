@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
-    <div class="scrollable flex flex-wrap" @scroll="scrollingComponent">
+    <div
+      class="scrollable h-screen lg:p-3 p-1 flex flex-wrap"
+      @scroll="scrollingComponent"
+    >
       <div class="image-left block">
         <div class="box" v-for="(i, index) in imgLeft" :key="index">
           <!-- {{ index % 2 ? "s" : "b" }} -->
@@ -44,10 +47,11 @@ export default {
     boxItemRight: [0, 1, 2, 3, 4],
     rerolled: false,
   }),
-  mounted() {
+  created() {
     this.imgLeft = this.image.splice(0, this.image.length / 2);
     this.imgRight = this.image;
-
+  },
+  mounted() {
     let scrollable = document.querySelector(".scrollable");
     let scrollInterval;
     let scrollItem = () => {
@@ -76,7 +80,7 @@ export default {
         console.log("angka turun");
         this.rerolled = false;
       }
-      if (scroll > 700) {
+      if (scroll > 750) {
         console.log("mepet bos");
         this.rerolled = false;
       }

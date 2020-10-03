@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="flex justify-between bg-gradient-to-b from-white to-transparent absolute z-10 pt-6 pb-10 w-full px-20"
+    class="lg:flex justify-between bg-gradient-to-b from-white to-transparent lg:absolute fixed z-10 pt-6 pb-10 w-full lg:px-20 px-10"
   >
     <div class="flex items-center lg:flex-grow mr-6">
       <a href="#" class="branding-logo">
@@ -20,37 +20,28 @@
         </svg>
       </a>
     </div>
-    <div class="block lg:hidden">
-      <button
-        class="flex items-center px-3 py-2 border rounded border-teal-400 hover:border-white"
-      >
-        Deskpass
-      </button>
-    </div>
-    <div class="w-full block lg:flex lg:items-center lg:w-auto">
-      <div class="text-sm text-black">
-        <a
-          href="#responsive-header"
-          class="block mt-4 lg:inline-block lg:mt-0 mr-4"
-        >
+    <div
+      class="font-bold hidden lg:block lg:font-normal w-full block lg:flex lg:items-center lg:w-auto lg:bg-transparent nav-menu"
+    >
+      <div class="lg:flex text-sm text-black">
+        <a href="#" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
           Find a Space
         </a>
-        <a
-          href="#responsive-header"
-          class="block mt-4 lg:inline-block lg:mt-0 mr-4"
-        >
+        <a href="#" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
           Pricing
         </a>
-        <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0">
-          Teams
-        </a>
-        <sup
-          class="bg-blue-600 badge-text font-bold rounded-md text-white transform scale-0 mr-4 ml-1"
-          >NEW</sup
-        >
+        <div class="flex">
+          <a href="#" class="block mt-4 lg:inline-block lg:mt-0">
+            Teams
+          </a>
+          <sup
+            class="bg-blue-600 badge-text font-bold rounded-md text-white mt-5 lg:mt-1 pt-2 h-4  mr-4 ml-1"
+            >NEW</sup
+          >
+        </div>
         <a
-          href="#responsive-header"
-          class="x-divider relative block mt-4 lg:inline-block lg:mt-0 ml-6"
+          href="#"
+          class="x-divider relative block mt-4 lg:inline-block lg:mt-0 lg:ml-6"
           >Log In</a
         >
       </div>
@@ -66,5 +57,9 @@ export default {};
 .branding-logo {
   width: 40%;
   max-width: 130px;
+}
+.branding-logo-sm svg {
+  width: 10%;
+  max-width: 20px;
 }
 </style>
